@@ -3,7 +3,7 @@ const authState = ref<"login" | "signup">("login");
 const authError = ref("");
 const showConfirmEmailMessage = ref(false);
 
-const router = useRoute();
+const router = useRouter();
 
 const { signUp, signIn, user } = useAuth();
 
@@ -33,7 +33,7 @@ const handleSubmit = async () => {
         if (authState.value === "login") {
             await signIn({ email: input.email, password: input.password });
 
-            router.push("/profile");
+            router.push("/myprofile");
         } else {
             await signUp({ email: input.email, password: input.password });
             showConfirmEmailMessage.value = true;
